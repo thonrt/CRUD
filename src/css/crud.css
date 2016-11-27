@@ -1,0 +1,131 @@
+.bella_crud{
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.bella_crud .vertical{
+    margin:0 5px;
+}
+
+
+/*table*/
+.bella_crud table {
+    width: 100%;
+    border:0;
+    border-collapse:collapse;
+} 
+
+.bella_crud td {
+    text-align: center;
+    padding: 10px 0;
+    color: #a9abab;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #f7f2f2;
+}
+
+.bella_crud th {
+    width: 40px;
+    background-color: #efe9e9;
+}
+
+
+/*oprate show/edit/delete*/
+.bella_crud span.action {
+    color: #33879c;
+}
+
+.bella_crud span.action:hover {
+    cursor: pointer;
+    color: #52b8d3;
+}
+
+.bella_crud span.vertical:after {
+    content: "|";
+    color: #52b8c3;
+}
+
+
+/*Add button*/
+.bella_crud .add_crud {
+    width: 50px;
+    height: 25px;
+    border-radius: 20px;
+    border: 1px solid #efe4e4;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.bella_crud .add_crud span {
+    line-height: 25px;
+    color: #6b5f5f;
+}
+
+
+
+/*pop*/
+.bella_mask{
+    position: relative;
+    width: 400px;
+    margin:0 auto;
+}
+
+/*detail*/
+.bella_mask .client_detail{
+    background-color: #f5f2f2;
+    text-align: center;
+    border-radius: 100px;
+    margin-top: 10px;
+}
+
+
+.bella_mask .client_detail .single_client{
+    padding-top: 10px;
+    color: #8c7070;
+    font-size: 20px;
+    width: 80%;
+    margin:0 auto;
+}
+
+.bella_mask .crud_ok{
+    width: 40px;
+    height: 23px;
+    margin:10px auto;
+    border-radius: 20px;
+    border: 1px solid #b3adad;
+    background-color: #b3adad;
+    color: #8c7070;
+    font-size: 20px;
+}
+.bella_mask .crud_ok span:hover{
+   background-color: :#cc4f4f;
+   color: #cc4f4f;
+}
+
+.bella_mask .crud_form{
+    position: relative;
+    width: 400px;
+    background-color: #f5f2f2;
+    border-radius: 100px;
+    margin:10px auto;
+}
+
+/*form*/
+.bella_mask .crud_form .form_item{
+    width: 250px;
+    margin:0 auto;
+    padding: 10px 0;
+}
+
+.bella_mask .crud_form .form_item span{
+    display: inline-block;
+    width: 80px;
+}
+.bella_mask .form_botton{
+    width: 150px;
+    margin: 0 auto; 
+}
+.bella_mask .form_botton input{
+    display: inline-block;
+    margin: 10px;
+}
