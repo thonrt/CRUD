@@ -12,7 +12,6 @@ var getList = function(req, res, next) {
 		"hint": "ok",
 		"data": clientsList
 	});
-	next();
 };
 
 
@@ -29,8 +28,6 @@ var getSingleList = function(req, res, next) {
 		"hint": "ok",
 		"data": resData
 	});
-
-	next();
 };
 
 var updateList = function(req, res, next) {
@@ -51,7 +48,6 @@ var updateList = function(req, res, next) {
 	res.json({
 		"hint": "OK"
 	});
-	next();
 };
 
 var addList = function(req, res, next) {
@@ -83,13 +79,13 @@ var addList = function(req, res, next) {
 		});
 	}
 
-	next();
 };
 
 var deleteList = function(req, res, next) {
 	var clientList = req.session.clients;
 	var clientId = req.params.clientId;
 	var newClientData = [];
+	console.log(clientId);
 	if (clientList && clientId) {
 		clientList.forEach(function(item) {
 			if (item.id !== clientId) {
@@ -102,7 +98,6 @@ var deleteList = function(req, res, next) {
 	res.json({
 		"hint": "OK"
 	});
-	next();
 };
 
 
