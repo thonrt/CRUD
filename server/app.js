@@ -1,7 +1,7 @@
 "use strict";
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8000;
+var port = 8000;
 var restRouter = require("./router");
 var cors = require('cors');
 var session = require('express-session');
