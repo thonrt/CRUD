@@ -69,7 +69,6 @@ var addList = function(req, res, next) {
 		}
 	}
 	var isValidate = validate(postData);
-
 	if (isValidate) {
 		postData.id = uuid.v1();
 		clientsList.push(postData);
@@ -106,7 +105,6 @@ var deleteList = function(req, res, next) {
 	next();
 };
 
-// exports.list = getList;
 
 module.exports = {
 	list: getList,

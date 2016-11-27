@@ -1,6 +1,7 @@
 "use strict";
 var express = require('express');
 var app = express();
+var path = require("path");
 var port = 8000;
 var restRouter = require("./router");
 var cors = require('cors');
@@ -8,24 +9,15 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
+app.use("/", express.static(path.join(__dirname, '../../CRUD')));
 app.use(cookieParser());
-app.set('trust proxy', 1);
-app.use(session({
-	secret: 'keyboard cat',
-	resave: false,
-	saveUninitialized: true,
-	cookie: {
-		secure: true
-	}
-}));
 
-
+//session-store
 var LokiStore = require("connect-loki")(session);
 
 app.use(session({
 	store: new LokiStore(),
-	secret: 'keyboard cat'
+	secret: 'crud'
 }));
 
 // for parsing application/json

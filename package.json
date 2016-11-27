@@ -11,10 +11,8 @@
         "browser": "^0.2.6",
         "cookie-parser": "^1.4.3",
         "cors": "^2.8.1",
-        "css-loader": "^0.25.0",
         "express": "^4.14.0",
         "express-session": "^1.14.2",
-        "file-loader": "^0.9.0",
         "fs": "0.0.1-security",
         "grunt": "^1.0.1",
         "grunt-concurrent": "^2.3.1",
@@ -22,21 +20,18 @@
         "grunt-contrib-uglify": "^2.0.0",
         "grunt-contrib-watch": "^1.0.0",
         "grunt-nodemon": "^0.4.2",
-        "html-loader": "^0.4.4",
         "is-my-json-valid": "^2.15.0",
         "jquery": "^3.1.1",
-        "json-loader": "^0.5.4",
         "multer": "^1.2.0",
         "node-uuid": "^1.4.7",
         "path": "^0.12.7",
         "react": "^15.4.1",
         "react-dom": "^15.4.1",
-        "style-loader": "^0.13.1",
         "underscore": "^1.8.3",
         "url": "^0.11.0",
-        "url-loader": "^0.5.7",
         "webpack": "^1.13.2"
     },
+
     "dependencies": {
         "babel-cli": "^6.18.0",
         "connect-loki": "^1.0.8",
@@ -44,6 +39,7 @@
     },
 
     "scripts": {
-        "start": "babel src --out-dir .temp&&browserify .temp/index.js -o build/crud.js"
+        "build": "babel client --out-dir .temp && browserify .temp/index.js -o build/crud.js",
+        "server": "node server/app.js"
     }
 }
