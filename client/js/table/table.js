@@ -16,17 +16,22 @@ export default class CrudTable extends React.Component {
 			tbodyArr.push($tr);
 		}.bind(this));
 
-		return (<div className = "crud_table">
-			<table>
-			<thead>
-			<tr>
-			<th> Id </th> 
-			<th> Name </th> 
-			<th> Age </th> 
-			<th> Address </th>
-			<th>operate</th> 
-			</tr> </thead>   <tbody> {
-				tbodyArr
-			} </tbody>   </table>   </div >);
+		return (
+			<div className = "crud_table">
+				<table>
+					<thead>
+						<tr>
+							<th> Id </th> 
+							<th> Name </th> 
+							<th> Age </th> 
+							<th> Address </th>
+							<th>operate</th> 
+						</tr> 
+					</thead>   
+				<tbody> 
+				{tbodyArr} 
+				</tbody>   
+			</table>   
+		</div >);
 	}
 }

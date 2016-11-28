@@ -56,24 +56,24 @@ export default class CrudForm extends React.Component {
 		let propsData = this.props.option.curData || {};
 		return (
 			<div>
-        <form className="crud_form" onSubmit={this.handleSubmit.bind(this)}>
-        	<div className="form_item">
-			    <span>Name:</span>
-			    <input type="text" name="name" value={this.state.name ||propsData.name} onChange={this.handleChange.bind(this,"name")}/>
-			</div>
-			<div className="form_item">
-			    <span>Age:</span>
-			    <input type="text" name="age" value={this.state.age ||propsData.age} onChange={this.handleChange.bind(this,"age")}/>
-			</div>
-			<div className="form_item">
-			    <span>Address:</span>
-			    <textarea value={this.state.address ||propsData.address} onChange={this.handleChange.bind(this,"address")} />
-			</div>
-			<div className="form_botton">
-			<input type="submit" value="Submit" />
-			<input type="reset" value="Reset" />
-			</div>
-		</form> 
+        		<form className="crud_form" onSubmit={this.handleSubmit.bind(this)}>
+		        	<div className="form_item">
+					    <span>Name:</span>
+					    <input type="text" name="name" value={this.state.name != null ? this.state.name : propsData.name} onChange={this.handleChange.bind(this,"name")}/>
+					</div>
+					<div className="form_item">
+					    <span>Age:</span>
+					    <input type="text" name="age" value={this.state.age != null ? this.state.age : propsData.age} onChange={this.handleChange.bind(this,"age")}/>
+					</div>
+					<div className="form_item">
+					    <span>Address:</span>
+					    <textarea value={this.state.address != null ? this.state.address : propsData.address} onChange={this.handleChange.bind(this,"address")} />
+					</div>
+					<div className="form_botton">
+						<input type="submit" value="Submit" />
+						<input type="reset" value="Reset" />
+					</div>
+				</form> 
 		</div>
 		);
 	}

@@ -94,6 +94,7 @@ var deleteList = function(req, res, next) {
 		});
 		clientList = newClientData;
 	}
+	req.session.clients = clientList;
 
 	res.json({
 		"hint": "OK"

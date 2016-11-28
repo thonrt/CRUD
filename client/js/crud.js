@@ -13,7 +13,7 @@ export default class Crud extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			type: 'show',
+			type: null,
 			data: []
 		};
 		this.crudDataModel = new CrudDataModel();
@@ -40,7 +40,7 @@ export default class Crud extends React.Component {
 	}
 
 	//插入真是DOM之前调用
-	componentDidMount() {
+	componentWillMount() {
 		this.loadClientList();
 	}
 
