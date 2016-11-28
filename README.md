@@ -1,7 +1,7 @@
 
 # installation
 	npm install
-Project need node which can support ES6.If your node version is too low,maybe you need to update node version.
+Please use the latest node version that support ES6.
 
 # Run
 	npm run build
