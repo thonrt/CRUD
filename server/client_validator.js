@@ -5,24 +5,24 @@
 var validator = require('is-my-json-valid');
 
 var validate = validator({
-	required: true,
-	type: 'object',
-	properties: {
-		name: {
-			required: true,
-			type: 'string'
-		},
-		age: {
-			required: false,
-			type: 'number'
-		},
-		address: {
-			required: false,
-			type: 'string'
-		}
-	}
+    required: true,
+    type: 'object',
+    properties: {
+        name: {
+            required: true,
+            type: 'string'
+        },
+        age: {
+            required: false,
+            type: 'number'
+        },
+        address: {
+            required: false,
+            type: 'string'
+        }
+    }
 }, {
-	verbose: true
+    verbose: true
 });
 
 

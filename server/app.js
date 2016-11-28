@@ -15,15 +15,15 @@ app.use(cookieParser());
 var LokiStore = require("connect-loki")(session);
 
 app.use(session({
-	store: new LokiStore(),
-	secret: 'crud'
+    store: new LokiStore(),
+    secret: 'crud'
 }));
 
 // for parsing application/json
 app.use(bodyParser.json());
 // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
-	extended: true
+    extended: true
 }));
 
 
@@ -32,5 +32,5 @@ app.use(restRouter);
 
 
 app.listen(port, function() {
-	console.log("crud started on port :" + port);
+    console.log("crud started on port :" + port);
 });

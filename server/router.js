@@ -8,13 +8,13 @@ var restRouter = express.Router();
 
 
 restRouter.route('/app')
-	.get(Clients.list)
-	.put(Clients.add);
+    .get(Clients.list)
+    .put(Clients.add);
 
 restRouter.route('/app/:clientId')
-	.get(Clients.singleList)
-	.post(Clients.update)
-	.delete(Clients.del);
+    .get(Clients.singleList)
+    .post(Clients.update)
+    .delete(Clients.del);
 
 
 
