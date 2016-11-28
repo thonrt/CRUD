@@ -9,7 +9,8 @@ export default class CrudForm extends React.Component {
 		this.state = {
 			name: null,
 			age: null,
-			address: null
+			address: null,
+			error: ""
 		};
 		this.crudDataModel = new CrudDataModel();
 	}
@@ -21,7 +22,7 @@ export default class CrudForm extends React.Component {
 	}
 
 
-	putClient(postData) {
+	putClient(postData, contianer) {
 		let o = this.props.option;
 		let option = {
 			url: o.url,
@@ -29,12 +30,26 @@ export default class CrudForm extends React.Component {
 			data: postData
 		};
 		let success = function(response) {
+			if (response.hint === "error") {
+				let errorString = "";
+				let responseData = response.data;
+				responseData.forEach(function(item) {
+					let fieldArr = item.field.split(".");
+					errorString += fieldArr[1] + " " + item.message + "; ";
+				});
+				this.setState({
+					error: errorString
+				});
+				return this;
+			}
 			let type = o.stateType;
 			this.props.callbackParent({
 				type: type
 			});
+			contianer.parent().remove();
 			console.log("put success");
 		}.bind(this);
+
 		let error = function(xhr, status, err) {
 			console.error(this.props.url, status, err.toString());
 		}.bind(this);
@@ -46,8 +61,13 @@ export default class CrudForm extends React.Component {
 
 	handleSubmit(event) {
 		let $curTarget = $(event.target);
-		$curTarget.parent().remove();
-		this.putClient(this.state);
+		let propsData = this.props.option.curData;
+		let postData = {
+			name: this.state.name || propsData.name,
+			age: this.state.age || propsData.age,
+			address: this.state.address || propsData.address
+		};
+		this.putClient(postData, $curTarget);
 		event.preventDefault();
 	}
 
@@ -69,9 +89,9 @@ export default class CrudForm extends React.Component {
 					    <span>Address:</span>
 					    <textarea value={this.state.address != null ? this.state.address : propsData.address} onChange={this.handleChange.bind(this,"address")} />
 					</div>
+					<div className="form_error">{this.state.error}</div>
 					<div className="form_botton">
 						<input type="submit" value="Submit" />
-						<input type="reset" value="Reset" />
 					</div>
 				</form> 
 		</div>

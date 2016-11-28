@@ -34,20 +34,28 @@ var updateList = function(req, res, next) {
 	var clientList = req.session.clients;
 	var clientId = req.params.clientId;
 	var postData = req.body;
-	if (clientList && clientId) {
+	var success = function(data) {
+
 		clientList.forEach(function(item) {
 			if (item.id === clientId) {
-				item.name = postData.name || item.name;
-				item.age = postData.age || item.age;
-				item.address = postData.address || item.address;
+				item.name = data.name || item.name;
+				item.age = data.age || item.age;
+				item.address = data.address || item.address;
 			}
 		});
-	}
+		req.session.clients = clientList;
+		res.json({
+			"hint": "ok"
+		});
 
-
-	res.json({
-		"hint": "OK"
-	});
+	};
+	var error = function(validate) {
+		res.json({
+			"hint": "error",
+			"data": validate.errors
+		});
+	};
+	judgeIsvalidate(postData, success, error);
 };
 
 var addList = function(req, res, next) {
@@ -57,28 +65,37 @@ var addList = function(req, res, next) {
 	if (!clientsList) {
 		clientsList = [];
 	}
-	for (var item in postData) {
-		var value = postData[item];
-		var parseValue = parseInt(value, 10);
-		if (parseValue.toString() === value) {
-			postData[item] = parseValue;
-		}
-	}
-	var isValidate = validate(postData);
-	if (isValidate) {
-		postData.id = uuid.v1();
-		clientsList.push(postData);
+	var success = function(data) {
+		data.id = uuid.v1();
+		clientsList.push(data);
 		req.session.clients = clientsList;
 		res.json({
 			"hint": "OK"
 		});
-	} else {
+	};
+	var error = function(validate) {
 		res.json({
 			"hint": "error",
-			"data": isValidate.errors
+			"data": validate.errors
 		});
-	}
+	};
+	judgeIsvalidate(postData, success, error);
 
+};
+var judgeIsvalidate = function(data, success, error) {
+	for (var item in data) {
+		var value = data[item];
+		var parseValue = parseInt(value, 10);
+		if (parseValue.toString() === value) {
+			data[item] = parseValue;
+		}
+	}
+	var isValidate = validate(data);
+	if (isValidate) {
+		success(data);
+	} else {
+		error(validate);
+	}
 };
 
 var deleteList = function(req, res, next) {

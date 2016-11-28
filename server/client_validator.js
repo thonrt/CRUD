@@ -22,8 +22,7 @@ var validate = validator({
 		}
 	}
 }, {
-	verbose: true,
-	greedy: true
+	verbose: true
 });
 
 
