@@ -27,7 +27,8 @@ export default class CrudForm extends React.Component {
 		let option = {
 			url: o.url,
 			type: o.type,
-			data: postData
+			data: JSON.stringify(postData),
+			contentType: "application/json"
 		};
 		let success = function(response) {
 			if (response.hint === "error") {
@@ -61,12 +62,11 @@ export default class CrudForm extends React.Component {
 
 	handleSubmit(event) {
 		let $curTarget = $(event.target);
-		let propsData = this.props.option.curData;
-		let postData = {
-			name: this.state.name || propsData.name,
-			age: this.state.age || propsData.age,
-			address: this.state.address || propsData.address
-		};
+		let formData = $curTarget.parent().find(".form_item .item").serializeArray();
+		let postData = {};
+		formData.forEach(function(item) {
+			postData[item.name] = item.value;
+		});
 		this.putClient(postData, $curTarget);
 		event.preventDefault();
 	}
@@ -76,18 +76,18 @@ export default class CrudForm extends React.Component {
 		let propsData = this.props.option.curData || {};
 		return (
 			<div>
-        		<form className="crud_form" onSubmit={this.handleSubmit.bind(this)}>
+				<form className="crud_form" onSubmit={this.handleSubmit.bind(this)}>
 		        	<div className="form_item">
 					    <span>Name:</span>
-					    <input type="text" name="name" value={this.state.name != null ? this.state.name : propsData.name} onChange={this.handleChange.bind(this,"name")}/>
+					    <input className="item" type="text" name="name" value={this.state.name != null ? this.state.name : propsData.name} onChange={this.handleChange.bind(this,"name")}/>
 					</div>
 					<div className="form_item">
 					    <span>Age:</span>
-					    <input type="text" name="age" value={this.state.age != null ? this.state.age : propsData.age} onChange={this.handleChange.bind(this,"age")}/>
+					    <input className="item" type="text" name="age" value={this.state.age != null ? this.state.age : propsData.age} onChange={this.handleChange.bind(this,"age")}/>
 					</div>
 					<div className="form_item">
 					    <span>Address:</span>
-					    <textarea value={this.state.address != null ? this.state.address : propsData.address} onChange={this.handleChange.bind(this,"address")} />
+					    <textarea className="item" name="address" value={this.state.address != null ? this.state.address : propsData.address} onChange={this.handleChange.bind(this,"address")} />
 					</div>
 					<div className="form_error">{this.state.error}</div>
 					<div className="form_botton">

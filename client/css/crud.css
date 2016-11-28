@@ -118,7 +118,8 @@
 }
 
 .bella_mask .crud_form .form_item span{
-    width: 80px;
+    width: 60px;
+    display: inline-block;
 }
 .bella_mask .form_botton{
     width: 150px;

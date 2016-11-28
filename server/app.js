@@ -4,7 +4,6 @@ var app = express();
 var path = require("path");
 var port = 8000;
 var restRouter = require("./router");
-var cors = require('cors');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -27,8 +26,6 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-//跨域
-app.use(cors());
 
 app.use(restRouter);
 
