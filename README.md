@@ -1,7 +1,6 @@
 
 # installation
-	npm install -g browserify
-	npm install --global babel-cli
+	npm install
 Project need node which can support ES6.If your node version is too low,maybe you need to update node version.
 
 # Run

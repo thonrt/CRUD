@@ -24,7 +24,7 @@
     "react-dom": "^15.4.1"
   },
   "scripts": {
-    "build": "node_modules/.bin/babel client --out-dir .temp && browserify .temp/index.js -o build/crud.js",
+    "build": "node_modules/.bin/babel client --out-dir .temp && node_modules/.bin/browserify .temp/index.js -o build/crud.js",
     "server": "node server/app.js"
   }
 }
