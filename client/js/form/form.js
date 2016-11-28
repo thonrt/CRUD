@@ -36,7 +36,7 @@ export default class CrudForm extends React.Component {
 				let responseData = response.data;
 				responseData.forEach(function(item) {
 					let fieldArr = item.field.split(".");
-					errorString += fieldArr[1] + " " + item.message + "; ";
+					errorString += `${fieldArr[1]} ${item.message},"${item.value}" should be ${item.type}. `;
 				});
 				this.setState({
 					error: errorString
@@ -73,7 +73,11 @@ export default class CrudForm extends React.Component {
 
 	render() {
 
-		let propsData = this.props.option.curData || {};
+		let propsData = this.props.option.curData || {
+			name: "",
+			age: "",
+			address: ""
+		};
 		return (
 			<div>
 				<form className="crud_form" onSubmit={this.handleSubmit.bind(this)}>

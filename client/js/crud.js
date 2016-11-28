@@ -39,7 +39,6 @@ export default class Crud extends React.Component {
 		this.crudDataModel.requestData(option, success, error);
 	}
 
-	//插入真是DOM之前调用
 	componentWillMount() {
 		this.loadClientList();
 	}
