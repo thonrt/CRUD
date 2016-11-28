@@ -12,7 +12,7 @@ export default class CrudTable extends React.Component {
 		let data = this.props.data || [];
 		let tbodyArr = [];
 		data.forEach(function(value) {
-			let $tr = <TableTbody tbodtData={value} callbackParent={this.props.callbackParent}/>;
+			let $tr = <TableTbody  key={value.id} tbodtData={value} callbackParent={this.props.callbackParent}/>;
 			tbodyArr.push($tr);
 		}.bind(this));
 

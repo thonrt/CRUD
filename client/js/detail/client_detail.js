@@ -1,4 +1,4 @@
-"use trict";
+"use strict";
 
 
 import React from 'react';
@@ -44,9 +44,9 @@ export default class ClientDetail extends React.Component {
 
 	}
 
-	handleClick() {
-		let curTarget = this.refs.okbutton;
-		$(curTarget).parent().remove();
+	handleClick(event) {
+		let curTarget = $(event.target);
+		$(curTarget).parent().parent().remove();
 	}
 
 
@@ -70,7 +70,7 @@ export default class ClientDetail extends React.Component {
         		<span>Address : </span>
         		<span>{singleData.address}</span>
         	</div>
-        	<div className="crud_ok" ref="okbutton" onClick={this.handleClick.bind(this)}><span>Ok</span></div>
+        	<div className="crud_ok" data-value="okbutton" onClick={this.handleClick.bind(this)}><span>Ok</span></div>
         </div>
 		);
 	}

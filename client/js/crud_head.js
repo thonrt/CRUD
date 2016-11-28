@@ -24,7 +24,7 @@ export default class CrudHead extends React.Component {
 
 	render() {
 		return ( < div className = 'add_crud'
-			ref = "addClient"
+
 			onClick = {
 				this.handleClick.bind(this)
 			} >
